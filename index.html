@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buletin Lunar BNR - Decembrie 2025</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -1359,9 +1358,7 @@ new Chart(document.getElementById('gdpChart'), {
             label: 'PIB variație anuală (%)',
             data: [6.5, 5.3, 4.6, 5.2, 3.4, 1.6, 1.5, 0.6, 4.4, 2.1, 1.7, 1.2, 2.0, 1.8, 1.7],
             backgroundColor: [6.5, 5.3, 4.6, 5.2, 3.4, 1.6, 1.5, 0.6, 4.4, 2.1, 1.7, 1.2, 2.0, 1.8, 1.7].map(v => v >= 3 ? COLORS.green : v >= 1.5 ? COLORS.sky : COLORS.gold),
-            borderRadius: 6,
-            borderSkipped: false,
-            maxBarThickness: 36
+            barThickness: 28
         }]
     },
     options: {
@@ -1544,13 +1541,11 @@ new Chart(document.getElementById('monetaryBaseChart'), {
             label: 'Numerar în circulație (mld RON)',
             data: [109.7, 108.2, 109.6, 109.8, 111.0, 113.3, 114.3, 114.2, 114.0, 114.8, 115.7, 122.4],
             backgroundColor: COLORS.blue,
-            borderRadius: 4,
             stack: 'stack0'
         }, {
             label: 'Conturi curente (mld RON)',
             data: [38.1, 40.9, 35.3, 39.1, 37.2, 36.9, 42.7, 34.0, 32.2, 33.1, 36.3, 29.9],
             backgroundColor: COLORS.sky,
-            borderRadius: 4,
             stack: 'stack0'
         }]
     },
@@ -1642,14 +1637,12 @@ new Chart(document.getElementById('bankProfitChart'), {
             label: 'ROE (%)',
             data: [12.5, 15.8, 18.9, 19.6, 20.8],
             backgroundColor: COLORS.green,
-            borderRadius: 6,
-            maxBarThickness: 48
+            barThickness: 36
         }, {
             label: 'ROA (%)',
             data: [1.3, 1.5, 1.7, 1.8, 1.9],
             backgroundColor: COLORS.gold,
-            borderRadius: 6,
-            maxBarThickness: 48
+            barThickness: 36
         }]
     },
     options: {
@@ -1679,13 +1672,11 @@ new Chart(document.getElementById('depositsChart'), {
             label: 'Depozite populație (mld RON)',
             data: [272.6, 275.2, 279.1, 282.4, 285.0, 288.3, 290.1, 291.8, 293.7, 297.1, 299.5, 303.8],
             backgroundColor: COLORS.blue,
-            borderRadius: 4,
             stack: 'stack0'
         }, {
             label: 'Depozite companii (mld RON)',
             data: [140.5, 142.3, 143.8, 144.2, 147.1, 148.6, 150.2, 153.4, 155.0, 158.2, 160.4, 172.8],
             backgroundColor: COLORS.sky,
-            borderRadius: 4,
             stack: 'stack0'
         }]
     },
@@ -1742,9 +1733,7 @@ new Chart(document.getElementById('creditSectorChart'), {
         datasets: [{
             label: 'mld RON',
             data: [191.5, 42.7, 56.3, 14.8, 8.2, 5.6, 20.3],
-            backgroundColor: [COLORS.purple, COLORS.blue, COLORS.teal, COLORS.orange, COLORS.green, COLORS.gold, COLORS.light],
-            borderRadius: 8,
-            maxBarThickness: 56
+            backgroundColor: [COLORS.purple, COLORS.blue, COLORS.teal, COLORS.orange, COLORS.green, COLORS.gold, COLORS.light]
         }]
     },
     options: {
@@ -1879,15 +1868,11 @@ new Chart(document.getElementById('bopChart'), {
         datasets: [{
             label: 'Ian-Oct 2024 (mld EUR)',
             data: [-22.6, 8.9, -5.8, 0.7, -18.8],
-            backgroundColor: rgba(COLORS.blue, 0.5),
-            borderRadius: 6,
-            maxBarThickness: 40
+            backgroundColor: rgba(COLORS.blue, 0.5)
         }, {
             label: 'Ian-Oct 2025 (mld EUR)',
             data: [-25.4, 9.7, -6.9, 0.8, -21.8],
-            backgroundColor: COLORS.blue,
-            borderRadius: 6,
-            maxBarThickness: 40
+            backgroundColor: COLORS.blue
         }]
     },
     options: {
@@ -1917,13 +1902,11 @@ new Chart(document.getElementById('extDebtChart'), {
             label: 'Datorie pe termen lung (mld EUR)',
             data: [96.8, 100.2, 108.4, 118.6, 131.8],
             backgroundColor: COLORS.red,
-            borderRadius: 4,
             stack: 'stack0'
         }, {
             label: 'Datorie pe termen scurt (mld EUR)',
             data: [28.5, 30.1, 32.6, 35.2, 39.0],
             backgroundColor: COLORS.orange,
-            borderRadius: 4,
             stack: 'stack0'
         }]
     },
@@ -1947,15 +1930,11 @@ new Chart(document.getElementById('budgetChart'), {
         datasets: [{
             label: 'Venituri (mld RON)',
             data: [344.3, 401.5, 449.0, 486.8, 519.1],
-            backgroundColor: COLORS.green,
-            borderRadius: 6,
-            maxBarThickness: 40
+            backgroundColor: COLORS.green
         }, {
             label: 'Cheltuieli (mld RON)',
             data: [405.0, 465.7, 520.3, 572.4, 627.8],
-            backgroundColor: COLORS.red,
-            borderRadius: 6,
-            maxBarThickness: 40
+            backgroundColor: COLORS.red
         }]
     },
     options: {
@@ -1977,9 +1956,7 @@ new Chart(document.getElementById('deficitChart'), {
         datasets: [{
             label: 'Sold bugetar cumulat (mld RON)',
             data: [-7.1, -16.8, -24.5, -30.2, -38.4, -48.7, -52.3, -59.8, -68.1, -74.2, -85.6, -108.7],
-            backgroundColor: COLORS.red,
-            borderRadius: 4,
-            maxBarThickness: 40
+            backgroundColor: COLORS.red
         }]
     },
     options: {
