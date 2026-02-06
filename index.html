@@ -1,0 +1,2120 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buletin Lunar BNR - Decembrie 2025</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bnr-navy: #0a1628;
+            --bnr-blue: #1a3a6b;
+            --bnr-royal: #2c5aa0;
+            --bnr-sky: #4a90d9;
+            --bnr-light: #7ab8f5;
+            --bnr-gold: #d4a843;
+            --bnr-gold-light: #f0d48a;
+            --bnr-red: #c0392b;
+            --bnr-green: #27ae60;
+            --bnr-orange: #e67e22;
+            --bnr-purple: #8e44ad;
+            --bg-primary: #f8f9fc;
+            --bg-card: #ffffff;
+            --text-primary: #1a1a2e;
+            --text-secondary: #6b7280;
+            --text-muted: #9ca3af;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+            --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
+            --shadow-xl: 0 16px 48px rgba(0,0,0,0.16);
+            --radius: 16px;
+            --radius-sm: 10px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--bnr-navy) 0%, var(--bnr-blue) 40%, var(--bnr-royal) 100%);
+            color: white;
+            padding: 80px 40px 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(212,168,67,0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(74,144,217,0.2) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.15);
+            padding: 8px 20px;
+            border-radius: 100px;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            color: var(--bnr-gold-light);
+        }
+
+        .hero-badge .dot {
+            width: 8px;
+            height: 8px;
+            background: var(--bnr-gold);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(36px, 5vw, 64px);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 16px;
+        }
+
+        .hero h1 span {
+            color: var(--bnr-gold-light);
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            font-weight: 300;
+            color: rgba(255,255,255,0.7);
+            max-width: 600px;
+            margin-bottom: 40px;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 16px;
+            max-width: 800px;
+        }
+
+        .hero-stat {
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: var(--radius-sm);
+            padding: 20px;
+            transition: transform 0.3s, background 0.3s;
+            cursor: default;
+        }
+
+        .hero-stat:hover {
+            transform: translateY(-4px);
+            background: rgba(255,255,255,0.14);
+        }
+
+        .hero-stat-value {
+            font-size: 28px;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .hero-stat-label {
+            font-size: 12px;
+            font-weight: 500;
+            color: rgba(255,255,255,0.6);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-stat-change {
+            font-size: 12px;
+            font-weight: 600;
+            margin-top: 6px;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 2px 8px;
+            border-radius: 100px;
+        }
+
+        .change-up { background: rgba(39,174,96,0.2); color: #6fdb9e; }
+        .change-down { background: rgba(192,57,43,0.2); color: #f1948a; }
+        .change-neutral { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.7); }
+
+        /* Navigation */
+        .nav-bar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+            padding: 0 40px;
+            overflow-x: auto;
+        }
+
+        .nav-bar::-webkit-scrollbar { height: 0; }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            gap: 4px;
+        }
+
+        .nav-item {
+            padding: 14px 20px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            text-decoration: none;
+            white-space: nowrap;
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .nav-item:hover, .nav-item.active {
+            color: var(--bnr-royal);
+            border-bottom-color: var(--bnr-royal);
+        }
+
+        /* Main Content */
+        .main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 40px 80px;
+        }
+
+        /* Section */
+        .section {
+            margin-bottom: 56px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .section-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--bnr-royal), var(--bnr-sky));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 600;
+            color: var(--bnr-navy);
+        }
+
+        .section-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-top: -16px;
+            margin-bottom: 24px;
+            padding-left: 52px;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-md);
+            padding: 28px;
+            transition: box-shadow 0.3s, transform 0.3s;
+            border: 1px solid rgba(0,0,0,0.04);
+        }
+
+        .card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-2px);
+        }
+
+        .card-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .card-subtitle {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        /* Grid Layouts */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(460px, 1fr));
+            gap: 24px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+        }
+
+        /* KPI Cards */
+        .kpi-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-sm);
+            padding: 24px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid rgba(0,0,0,0.04);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .kpi-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--bnr-royal), var(--bnr-sky));
+        }
+
+        .kpi-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .kpi-label {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        .kpi-value {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--bnr-navy);
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .kpi-detail {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        .kpi-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 3px 10px;
+            border-radius: 100px;
+            margin-top: 8px;
+        }
+
+        .badge-green { background: #e8f8ef; color: #1a8a4a; }
+        .badge-red { background: #fde8e8; color: #c0392b; }
+        .badge-blue { background: #e8f0fd; color: #2c5aa0; }
+        .badge-gold { background: #fdf5e3; color: #b8860b; }
+        .badge-purple { background: #f3e8fd; color: #8e44ad; }
+
+        /* Chart Container */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            height: 320px;
+        }
+
+        .chart-container-sm {
+            height: 260px;
+        }
+
+        .chart-container-lg {
+            height: 400px;
+        }
+
+        /* Insight Callout */
+        .insight {
+            background: linear-gradient(135deg, #fdf5e3, #fff9ed);
+            border-left: 4px solid var(--bnr-gold);
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            padding: 20px 24px;
+            margin: 24px 0;
+        }
+
+        .insight-title {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--bnr-gold);
+            margin-bottom: 6px;
+        }
+
+        .insight-text {
+            font-size: 14px;
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+
+        /* Revelation Card */
+        .revelation {
+            background: linear-gradient(135deg, var(--bnr-navy), var(--bnr-blue));
+            color: white;
+            border-radius: var(--radius);
+            padding: 32px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .revelation::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(212,168,67,0.15), transparent 70%);
+            border-radius: 50%;
+        }
+
+        .revelation-label {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--bnr-gold);
+            margin-bottom: 12px;
+        }
+
+        .revelation h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            position: relative;
+        }
+
+        .revelation p {
+            font-size: 14px;
+            color: rgba(255,255,255,0.75);
+            line-height: 1.7;
+            position: relative;
+        }
+
+        /* Table */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+
+        .data-table th {
+            text-align: left;
+            padding: 10px 12px;
+            font-weight: 600;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-muted);
+            border-bottom: 2px solid #eee;
+        }
+
+        .data-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #f3f3f3;
+            color: var(--text-primary);
+        }
+
+        .data-table tr:hover td {
+            background: #f8f9fc;
+        }
+
+        .data-table .num {
+            text-align: right;
+            font-variant-numeric: tabular-nums;
+            font-weight: 500;
+        }
+
+        /* Tooltip */
+        [data-tooltip] {
+            position: relative;
+            cursor: help;
+        }
+
+        [data-tooltip]::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: calc(100% + 8px);
+            left: 50%;
+            transform: translateX(-50%) scale(0.95);
+            background: var(--bnr-navy);
+            color: white;
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 400;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.2s;
+            z-index: 10;
+            max-width: 280px;
+            white-space: normal;
+            text-align: center;
+            line-height: 1.4;
+        }
+
+        [data-tooltip]:hover::after {
+            opacity: 1;
+            transform: translateX(-50%) scale(1);
+        }
+
+        /* Progress bar */
+        .progress-bar {
+            height: 8px;
+            background: #eee;
+            border-radius: 100px;
+            overflow: hidden;
+            margin-top: 12px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            border-radius: 100px;
+            transition: width 1.5s ease;
+        }
+
+        /* Comparison Row */
+        .comparison-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .comparison-row:last-child { border-bottom: none; }
+
+        .comparison-label {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .comparison-values {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .comparison-old {
+            font-size: 13px;
+            color: var(--text-muted);
+            text-decoration: line-through;
+        }
+
+        .comparison-new {
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--bnr-navy);
+            color: rgba(255,255,255,0.5);
+            text-align: center;
+            padding: 40px;
+            font-size: 13px;
+        }
+
+        .footer strong {
+            color: rgba(255,255,255,0.8);
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero { padding: 48px 20px 40px; }
+            .main { padding: 24px 20px 60px; }
+            .nav-bar { padding: 0 20px; }
+            .grid-2, .grid-3 { grid-template-columns: 1fr; }
+            .grid-4 { grid-template-columns: repeat(2, 1fr); }
+            .hero-stats { grid-template-columns: repeat(2, 1fr); }
+            .card { padding: 20px; }
+            .section-title { font-size: 22px; }
+        }
+
+        /* Sparkline inline */
+        .sparkline {
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 8px;
+        }
+
+        /* Gauge */
+        .gauge-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        /* Animated counter */
+        .count-up { transition: all 0.3s; }
+
+        /* Scroll hint */
+        .scroll-hint {
+            text-align: center;
+            padding: 20px;
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Hero -->
+<section class="hero">
+    <div class="hero-content">
+        <div class="hero-badge">
+            <span class="dot"></span>
+            Banca Națională a României
+        </div>
+        <h1>Buletin Lunar<br><span>Decembrie 2025</span></h1>
+        <p class="hero-subtitle">Secțiune statistică — Anul XXXIII, nr. 386. Principalii indicatori macroeconomici și monetari ai României.</p>
+        <div class="hero-stats">
+            <div class="hero-stat" data-tooltip="Produsul Intern Brut, variație procentuală anuală, T3 2025">
+                <div class="hero-stat-value">+1,7%</div>
+                <div class="hero-stat-label">Creștere PIB</div>
+                <div class="hero-stat-change change-down">&#9660; de la 2,1%</div>
+            </div>
+            <div class="hero-stat" data-tooltip="Rata inflației IPC, variație anuală dec 2025">
+                <div class="hero-stat-value">5,1%</div>
+                <div class="hero-stat-label">Rata Inflației</div>
+                <div class="hero-stat-change change-down">&#9660; de la 5,5% nov</div>
+            </div>
+            <div class="hero-stat" data-tooltip="Rata dobânzii de politică monetară BNR">
+                <div class="hero-stat-value">6,50%</div>
+                <div class="hero-stat-label">Rata de referință</div>
+                <div class="hero-stat-change change-neutral">&#9644; menținută</div>
+            </div>
+            <div class="hero-stat" data-tooltip="Cursul EUR/RON la 31 decembrie 2025">
+                <div class="hero-stat-value">4,976</div>
+                <div class="hero-stat-label">EUR/RON</div>
+                <div class="hero-stat-change change-down">&#9650; +0,3% YTD</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Navigation -->
+<nav class="nav-bar">
+    <div class="nav-inner">
+        <a class="nav-item active" onclick="scrollToSection('macro')">Macroeconomie</a>
+        <a class="nav-item" onclick="scrollToSection('inflation')">Prețuri & Inflație</a>
+        <a class="nav-item" onclick="scrollToSection('monetary')">Politică Monetară</a>
+        <a class="nav-item" onclick="scrollToSection('banking')">Sector Bancar</a>
+        <a class="nav-item" onclick="scrollToSection('deposits')">Depozite & Credite</a>
+        <a class="nav-item" onclick="scrollToSection('forex')">Piața Valutară</a>
+        <a class="nav-item" onclick="scrollToSection('capital')">Piața de Capital</a>
+        <a class="nav-item" onclick="scrollToSection('bop')">Balanța de Plăți</a>
+        <a class="nav-item" onclick="scrollToSection('budget')">Buget Public</a>
+    </div>
+</nav>
+
+<!-- Main Content -->
+<main class="main">
+
+    <!-- ==================== MACROECONOMIE ==================== -->
+    <section class="section fade-in" id="macro">
+        <div class="section-header">
+            <div class="section-icon">📊</div>
+            <h2 class="section-title">Indicatori Macroeconomici</h2>
+        </div>
+        <p class="section-desc">Evoluția principalilor indicatori economici ai României — PIB, producție industrială, șomaj și comerț exterior</p>
+
+        <div class="grid-4" style="margin-bottom: 24px;">
+            <div class="kpi-card" data-tooltip="Variație procentuală anuală, T3 2025 față de T3 2024">
+                <div class="kpi-label">PIB real</div>
+                <div class="kpi-value">+1,7%</div>
+                <div class="kpi-detail">T3 2025 vs T3 2024</div>
+                <div class="kpi-badge badge-gold">Încetinire de la +2,1%</div>
+            </div>
+            <div class="kpi-card" data-tooltip="Variație a producției industriale, oct 2025 vs oct 2024">
+                <div class="kpi-label">Producție industrială</div>
+                <div class="kpi-value" style="color: var(--bnr-red);">-1,4%</div>
+                <div class="kpi-detail">Oct 2025, variație anuală</div>
+                <div class="kpi-badge badge-red">Scădere continuă</div>
+            </div>
+            <div class="kpi-card" data-tooltip="Rata șomajului înregistrat, nov 2025">
+                <div class="kpi-label">Rata șomajului</div>
+                <div class="kpi-value">5,2%</div>
+                <div class="kpi-detail">Noiembrie 2025</div>
+                <div class="kpi-badge badge-blue">Stabilă</div>
+            </div>
+            <div class="kpi-card" data-tooltip="Deficit comercial cumulat ian-oct 2025, mld EUR">
+                <div class="kpi-label">Deficit comercial</div>
+                <div class="kpi-value">-22,8</div>
+                <div class="kpi-detail">mld EUR, ian-oct 2025</div>
+                <div class="kpi-badge badge-red">Adâncire deficit</div>
+            </div>
+        </div>
+
+        <div class="grid-2">
+            <div class="card">
+                <div class="card-title">Evoluția PIB-ului Real</div>
+                <div class="card-subtitle">Variație procentuală anuală, date trimestriale</div>
+                <div class="chart-container">
+                    <canvas id="gdpChart"></canvas>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-title">Producție Industrială vs. Șomaj</div>
+                <div class="card-subtitle">Variație anuală producție (%) și rata șomajului (%)</div>
+                <div class="chart-container">
+                    <canvas id="industryUnemployChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="insight">
+            <div class="insight-title">Revelație</div>
+            <div class="insight-text">
+                Economia României a încetinit semnificativ în 2025, cu PIB-ul trecând de la <strong>+4,4%</strong> în T1 2024 la doar <strong>+1,7%</strong> în T3 2025.
+                Producția industrială a rămas în teritoriu negativ pe parcursul întregului an 2025, semnalând dificultăți structurale în sectorul manufacturier.
+                Cu toate acestea, rata șomajului s-a menținut relativ stabilă (~5,2%), sugerând o reziliență a pieței muncii susținută de sectorul serviciilor.
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== INFLATIE ==================== -->
+    <section class="section fade-in" id="inflation">
+        <div class="section-header">
+            <div class="section-icon">🔥</div>
+            <h2 class="section-title">Prețuri și Inflație</h2>
+        </div>
+        <p class="section-desc">Indicii prețurilor de consum pe categorii principale — alimente, nealimentare și servicii</p>
+
+        <div class="grid-2" style="margin-bottom: 24px;">
+            <div class="card">
+                <div class="card-title">Evoluția Inflației (IPC, variație anuală)</div>
+                <div class="card-subtitle">Total, alimente, nealimentare și servicii — 2021-2025</div>
+                <div class="chart-container chart-container-lg">
+                    <canvas id="inflationChart"></canvas>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-title">Componente ale Inflației — Dec 2025</div>
+                <div class="card-subtitle">Contribuția fiecărei categorii la inflația totală</div>
+                <div class="chart-container" style="height: 260px;">
+                    <canvas id="inflationPieChart"></canvas>
+                </div>
+                <div style="margin-top: 16px;">
+                    <div class="comparison-row">
+                        <span class="comparison-label">Alimente</span>
+                        <div class="comparison-values">
+                            <span class="comparison-new" style="color: var(--bnr-red);">+5,4%</span>
+                        </div>
+                    </div>
+                    <div class="comparison-row">
+                        <span class="comparison-label">Nealimentare</span>
+                        <div class="comparison-values">
+                            <span class="comparison-new" style="color: var(--bnr-orange);">+4,7%</span>
+                        </div>
+                    </div>
+                    <div class="comparison-row">
+                        <span class="comparison-label">Servicii</span>
+                        <div class="comparison-values">
+                            <span class="comparison-new" style="color: var(--bnr-purple);">+5,3%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="revelation">
+            <div class="revelation-label">Descoperire cheie</div>
+            <h3>Inflația s-a temperat semnificativ față de vârful din 2022</h3>
+            <p>De la un maxim de <strong>16,8%</strong> în noiembrie 2022, inflația s-a redus la <strong>5,1%</strong> în decembrie 2025. Totuși, prețurile alimentelor
+            rămân principalul motor al inflației, iar serviciile au o componentă persistentă. Rata de bază (CORE2 ajustat) se menține la aproximativ 5,1%, indicând presiuni inflaționiste de fond care nu permit BNR o relaxare monetară rapidă.</p>
+        </div>
+    </section>
+
+    <!-- ==================== POLITICA MONETARA ==================== -->
+    <section class="section fade-in" id="monetary">
+        <div class="section-header">
+            <div class="section-icon">🏛️</div>
+            <h2 class="section-title">Politică Monetară</h2>
+        </div>
+        <p class="section-desc">Rata de politică monetară, operațiuni de piață, facilități permanente și rezerve minime obligatorii</p>
+
+        <div class="grid-3" style="margin-bottom: 24px;">
+            <div class="kpi-card" data-tooltip="Rata de politică monetară stabilită de CA al BNR">
+                <div class="kpi-label">Rata de referință BNR</div>
+                <div class="kpi-value" style="color: var(--bnr-royal);">6,50%</div>
+                <div class="kpi-detail">Menținută din ianuarie 2025</div>
+                <div class="kpi-badge badge-blue">Pauză în ciclul de relaxare</div>
+            </div>
+            <div class="kpi-card" data-tooltip="Rata facilității de credit (Lombard)">
+                <div class="kpi-label">Facilitate de credit</div>
+                <div class="kpi-value">7,50%</div>
+                <div class="kpi-detail">Facilitatea de creditare</div>
+            </div>
+            <div class="kpi-card" data-tooltip="Rata facilității de depozit overnight">
+                <div class="kpi-label">Facilitate de depozit</div>
+                <div class="kpi-value">5,50%</div>
+                <div class="kpi-detail">Facilitatea de depozit</div>
+            </div>
+        </div>
+
+        <div class="grid-2">
+            <div class="card">
+                <div class="card-title">Evoluția Ratei de Politică Monetară</div>
+                <div class="card-subtitle">Rata cheie BNR și coridorul de dobânzi, 2021-2025</div>
+                <div class="chart-container">
+                    <canvas id="policyRateChart"></canvas>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-title">Baza Monetară</div>
+                <div class="card-subtitle">Evoluția bazei monetare (mld RON) și a componentelor sale</div>
+                <div class="chart-container">
+                    <canvas id="monetaryBaseChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid-2" style="margin-top: 24px;">
+            <div class="card">
+                <div class="card-title">Rezerve Minime Obligatorii</div>
+                <div class="card-subtitle">Rate de rezervă pentru depozite în lei și valută</div>
+                <div style="padding: 12px 0;">
+                    <div class="comparison-row">
+                        <span class="comparison-label" data-tooltip="Rata RMO pentru pasive în lei">Pasive în LEI</span>
+                        <div class="comparison-values">
+                            <span class="comparison-new" style="color: var(--bnr-royal); font-size: 24px;">8%</span>
+                        </div>
+                    </div>
+                    <div class="comparison-row">
+                        <span class="comparison-label" data-tooltip="Rata RMO pentru pasive în valută cu scadența reziduală mai mică de 2 ani">Pasive în VALUTĂ (&lt;2 ani)</span>
+                        <div class="comparison-values">
+                            <span class="comparison-new" style="color: var(--bnr-gold); font-size: 24px;">8%</span>
+                        </div>
+                    </div>
+                    <div class="comparison-row">
+                        <span class="comparison-label" data-tooltip="Rata RMO pentru pasive în valută cu scadența reziduală mai mare de 2 ani">Pasive în VALUTĂ (&gt;2 ani)</span>
+                        <div class="comparison-values">
+                            <span class="comparison-new" style="color: var(--bnr-green); font-size: 24px;">5%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-title">Masa Monetară M3</div>
+                <div class="card-subtitle">Evoluția agregatului monetar larg (mld RON)</div>
+                <div class="chart-container chart-container-sm">
+                    <canvas id="m3Chart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="insight">
+            <div class="insight-title">Observație importantă</div>
+            <div class="insight-text">
+                BNR a oprit ciclul de reducere a dobânzii de referință la <strong>6,50%</strong>, menținând-o constantă de la începutul lui 2025. Rata ROBOR 3M a coborât la
+                <strong>5,71%</strong>, reflectând o oarecare relaxare pe piața interbancară, deși coridorul de dobânzi rămâne larg (5,50% - 7,50%), semnalând cautela BNR față de persistența inflației.
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== SECTOR BANCAR ==================== -->
+    <section class="section fade-in" id="banking">
+        <div class="section-header">
+            <div class="section-icon">🏦</div>
+            <h2 class="section-title">Indicatori de Risc Bancar</h2>
+        </div>
+        <p class="section-desc">Solvabilitate, calitatea portofoliului de credite, lichiditate și profitabilitate în sectorul bancar</p>
+
+        <div class="grid-4" style="margin-bottom: 24px;">
+            <div class="kpi-card" data-tooltip="Raportul fondurilor proprii totale / active ponderate la risc">
+                <div class="kpi-label">Rata de solvabilitate</div>
+                <div class="kpi-value" style="color: var(--bnr-green);">23,5%</div>
+                <div class="kpi-detail">Sep 2025</div>
+                <div class="kpi-badge badge-green">Peste minim 8%</div>
+            </div>
+            <div class="kpi-card" data-tooltip="Rata creditelor neperformante (NPL) în total credite">
+                <div class="kpi-label">Rata NPL</div>
+                <div class="kpi-value">2,3%</div>
+                <div class="kpi-detail">Sep 2025</div>
+                <div class="kpi-badge badge-green">Nivel istoric scăzut</div>
+            </div>
+            <div class="kpi-card" data-tooltip="Rentabilitatea capitalului propriu (ROE)">
+                <div class="kpi-label">ROE</div>
+                <div class="kpi-value" style="color: var(--bnr-green);">20,8%</div>
+                <div class="kpi-detail">Sep 2025</div>
+                <div class="kpi-badge badge-green">Profitabilitate ridicată</div>
+            </div>
+            <div class="kpi-card" data-tooltip="Gradul de acoperire cu provizioane a creditelor neperformante">
+                <div class="kpi-label">Acoperire provizioane</div>
+                <div class="kpi-value">66,3%</div>
+                <div class="kpi-detail">Sep 2025</div>
+                <div class="kpi-badge badge-blue">Nivel adecvat</div>
+            </div>
+        </div>
+
+        <div class="grid-2">
+            <div class="card">
+                <div class="card-title">Evoluția Ratei NPL și Solvabilității</div>
+                <div class="card-subtitle">Rata creditelor neperformante vs. rata de solvabilitate, 2021-2025</div>
+                <div class="chart-container">
+                    <canvas id="bankingRiskChart"></canvas>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-title">Profitabilitate Bancară</div>
+                <div class="card-subtitle">ROE și ROA — sectorul bancar românesc</div>
+                <div class="chart-container">
+                    <canvas id="bankProfitChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="revelation" style="margin-top: 24px;">
+            <div class="revelation-label">Sectorul bancar — sănătate excelentă</div>
+            <h3>România are unul dintre cele mai sănătoase sisteme bancare din UE</h3>
+            <p>Cu o rată de solvabilitate de <strong>23,5%</strong> (aproape de 3x minimul reglementar), o rată NPL de doar <strong>2,3%</strong> (cel mai scăzut nivel istoric) și un ROE de <strong>20,8%</strong>, sectorul bancar românesc se află într-o formă excepțională. Nivelul scăzut al creditelor neperformante arată o calitate solidă a portofoliului, iar profitabilitatea ridicată reflectă marjele generoase de dobândă.</p>
+        </div>
+    </section>
+
+    <!-- ==================== DEPOZITE SI CREDITE ==================== -->
+    <section class="section fade-in" id="deposits">
+        <div class="section-header">
+            <div class="section-icon">💰</div>
+            <h2 class="section-title">Depozite și Credite</h2>
+        </div>
+        <p class="section-desc">Structura depozitelor și creditelor acordate de instituțiile financiare monetare</p>
+
+        <div class="grid-2" style="margin-bottom: 24px;">
+            <div class="card">
+                <div class="card-title">Depozite ale Clientelei Neguvernamentale</div>
+                <div class="card-subtitle">Evoluție lunară 2025 (mld RON)</div>
+                <div class="chart-container">
+                    <canvas id="depositsChart"></canvas>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-title">Credite Acordate de Instituțiile de Credit</div>
+                <div class="card-subtitle">Total credite în sold, mld RON</div>
+                <div class="chart-container">
+                    <canvas id="creditsChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid-3" style="margin-bottom: 24px;">
+            <div class="kpi-card" data-tooltip="Total depozite rezidenți neguvernamentali, dec 2025">
+                <div class="kpi-label">Total depozite</div>
+                <div class="kpi-value">476,6</div>
+                <div class="kpi-detail">mld RON, dec 2025</div>
+                <div class="kpi-badge badge-green">+12% anual</div>
+            </div>
+            <div class="kpi-card" data-tooltip="Depozite gospodării populației, dec 2025">
+                <div class="kpi-label">Depozite populație</div>
+                <div class="kpi-value">303,8</div>
+                <div class="kpi-detail">mld RON</div>
+                <div class="kpi-badge badge-blue">63,8% din total</div>
+            </div>
+            <div class="kpi-card" data-tooltip="Total credite acordate sectorului privat">
+                <div class="kpi-label">Total credite</div>
+                <div class="kpi-value">339,4</div>
+                <div class="kpi-detail">mld RON, dec 2025</div>
+                <div class="kpi-badge badge-green">+8,5% anual</div>
+            </div>
+        </div>
+
+        <div class="card" style="margin-bottom: 24px;">
+            <div class="card-title">Structura Creditelor pe Sectoare de Activitate</div>
+            <div class="card-subtitle">Decembrie 2025, mld RON</div>
+            <div class="chart-container chart-container-sm">
+                <canvas id="creditSectorChart"></canvas>
+            </div>
+        </div>
+
+        <div class="insight">
+            <div class="insight-title">Dinamica depozite vs. credite</div>
+            <div class="insight-text">
+                Depozitele au crescut mai rapid decât creditele în 2025, lărgind excedentul de lichiditate al sistemului bancar.
+                Populația deține <strong>63,8%</strong> din totalul depozitelor, iar creditele pentru persoane fizice (inclusiv ipotecare) reprezintă
+                <strong>~55%</strong> din portofoliul total de credite. Raportul credite/depozite s-a menținut sub 75%, semnalând o poziție confortabilă de finanțare.
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== PIATA VALUTARA ==================== -->
+    <section class="section fade-in" id="forex">
+        <div class="section-header">
+            <div class="section-icon">💱</div>
+            <h2 class="section-title">Piața Valutară</h2>
+        </div>
+        <p class="section-desc">Cursul de schimb EUR/RON și USD/RON, piața valutară interbancară</p>
+
+        <div class="grid-3" style="margin-bottom: 24px;">
+            <div class="kpi-card" data-tooltip="Cursul de schimb EUR/RON la 31 decembrie 2025">
+                <div class="kpi-label">EUR / RON</div>
+                <div class="kpi-value" style="color: var(--bnr-royal);">4,9756</div>
+                <div class="kpi-detail">31 decembrie 2025</div>
+                <div class="kpi-badge badge-gold">+0,3% în 2025</div>
+            </div>
+            <div class="kpi-card" data-tooltip="Cursul de schimb USD/RON la 31 decembrie 2025">
+                <div class="kpi-label">USD / RON</div>
+                <div class="kpi-value">4,8077</div>
+                <div class="kpi-detail">31 decembrie 2025</div>
+                <div class="kpi-badge badge-red">+6,9% în 2025</div>
+            </div>
+            <div class="kpi-card" data-tooltip="Volum tranzacții piață interbancară, medie zilnică dec 2025">
+                <div class="kpi-label">Piața interbancară</div>
+                <div class="kpi-value">2,46</div>
+                <div class="kpi-detail">mld EUR vol. mediu zilnic</div>
+            </div>
+        </div>
+
+        <div class="grid-2">
+            <div class="card">
+                <div class="card-title">Evoluția Cursului EUR/RON</div>
+                <div class="card-subtitle">Cursul oficial BNR, lunar, 2021-2025</div>
+                <div class="chart-container">
+                    <canvas id="eurronChart"></canvas>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-title">Evoluția Cursului USD/RON</div>
+                <div class="card-subtitle">Cursul oficial BNR, lunar, 2021-2025</div>
+                <div class="chart-container">
+                    <canvas id="usdronChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="revelation" style="margin-top: 24px;">
+            <div class="revelation-label">Stabilitate controlată</div>
+            <h3>Leul rămâne cvasi-ancorat de euro, dar s-a depreciat față de dolar</h3>
+            <p>BNR a continuat să mențină cursul EUR/RON într-o bandă foarte îngustă în jurul valorii de <strong>4,97-4,98</strong>, practicând un regim de facto de „managed float" agresiv. Deprecierea față de USD (<strong>+6,9%</strong> în 2025) reflectă întărirea globală a dolarului, nu o slăbiciune specifică a leului. Piața interbancară a funcționat fluid, cu volume adecvate.</p>
+        </div>
+    </section>
+
+    <!-- ==================== PIATA DE CAPITAL ==================== -->
+    <section class="section fade-in" id="capital">
+        <div class="section-header">
+            <div class="section-icon">📈</div>
+            <h2 class="section-title">Piața de Capital</h2>
+        </div>
+        <p class="section-desc">Bursa de Valori București — indicii bursieri, capitalizare și volume tranzacționate</p>
+
+        <div class="grid-4" style="margin-bottom: 24px;">
+            <div class="kpi-card" data-tooltip="Indicele BET la sfârșitul lunii decembrie 2025">
+                <div class="kpi-label">Indice BET</div>
+                <div class="kpi-value" style="color: var(--bnr-green);">18.415</div>
+                <div class="kpi-detail">Dec 2025</div>
+                <div class="kpi-badge badge-green">Record istoric!</div>
+            </div>
+            <div class="kpi-card" data-tooltip="Capitalizarea bursieră totală BVB">
+                <div class="kpi-label">Capitalizare BVB</div>
+                <div class="kpi-value">251,0</div>
+                <div class="kpi-detail">mld RON</div>
+                <div class="kpi-badge badge-green">+23% YTD</div>
+            </div>
+            <div class="kpi-card" data-tooltip="Număr de tranzacții în decembrie 2025">
+                <div class="kpi-label">Nr. tranzacții</div>
+                <div class="kpi-value">61.415</div>
+                <div class="kpi-detail">Dec 2025</div>
+            </div>
+            <div class="kpi-card" data-tooltip="Valoare tranzacții acțiuni dec 2025, mil RON">
+                <div class="kpi-label">Valoare tranzacții</div>
+                <div class="kpi-value">1.296</div>
+                <div class="kpi-detail">mil RON, dec 2025</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">Evoluția Indicelui BET</div>
+            <div class="card-subtitle">Performanța principalului indice bursier, 2021-2025 (puncte)</div>
+            <div class="chart-container chart-container-lg">
+                <canvas id="betChart"></canvas>
+            </div>
+        </div>
+
+        <div class="insight" style="margin-top: 24px;">
+            <div class="insight-title">Performanță spectaculoasă</div>
+            <div class="insight-text">
+                Indicele BET a atins un <strong>maxim istoric</strong> în decembrie 2025 la <strong>18.415 puncte</strong>, aproape dublu față de nivelul din 2021 (~12.000).
+                Capitalizarea totală a BVB a depășit <strong>251 mld RON</strong>, iar promovarea la statutul de piață emergentă de către FTSE Russell a atras fluxuri importante de capital.
+                Bursa românească a fost una dintre cele mai performante piețe din Europa în 2025.
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== BALANTA DE PLATI ==================== -->
+    <section class="section fade-in" id="bop">
+        <div class="section-header">
+            <div class="section-icon">🌍</div>
+            <h2 class="section-title">Balanța de Plăți</h2>
+        </div>
+        <p class="section-desc">Contul curent, investiții străine directe și poziția investițională internațională</p>
+
+        <div class="grid-3" style="margin-bottom: 24px;">
+            <div class="kpi-card" data-tooltip="Deficit de cont curent cumulat ian-oct 2025, mld EUR">
+                <div class="kpi-label">Deficit cont curent</div>
+                <div class="kpi-value" style="color: var(--bnr-red);">-21,8</div>
+                <div class="kpi-detail">mld EUR, ian-oct 2025</div>
+                <div class="kpi-badge badge-red">+16% față de 2024</div>
+            </div>
+            <div class="kpi-card" data-tooltip="ISD nete ian-oct 2025, mld EUR">
+                <div class="kpi-label">Investiții străine directe</div>
+                <div class="kpi-value" style="color: var(--bnr-green);">+7,2</div>
+                <div class="kpi-detail">mld EUR, ISD nete</div>
+                <div class="kpi-badge badge-green">Flux pozitiv susținut</div>
+            </div>
+            <div class="kpi-card" data-tooltip="Acoperirea deficitului de cont curent prin ISD">
+                <div class="kpi-label">Acoperire prin ISD</div>
+                <div class="kpi-value">33,2%</div>
+                <div class="kpi-detail">din deficitul de cont curent</div>
+                <div class="kpi-badge badge-gold">Necesită atenție</div>
+            </div>
+        </div>
+
+        <div class="grid-2">
+            <div class="card">
+                <div class="card-title">Componentele Contului Curent</div>
+                <div class="card-subtitle">Ian-Oct 2025 vs 2024, mld EUR</div>
+                <div class="chart-container">
+                    <canvas id="bopChart"></canvas>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-title">Datoria Externă</div>
+                <div class="card-subtitle">Datoria externă totală pe termen lung vs. scurt (mld EUR)</div>
+                <div class="chart-container">
+                    <canvas id="extDebtChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="revelation" style="margin-top: 24px;">
+            <div class="revelation-label">Risc macroeconomic principal</div>
+            <h3>Deficitul extern rămâne cel mai mare punct vulnerabil al economiei</h3>
+            <p>Deficitul de cont curent a continuat să se adâncească, ajungând la <strong>-21,8 mld EUR</strong> în primele 10 luni din 2025 (+16% față de aceeași perioadă din 2024). Investițiile străine directe acoperă doar <strong>33%</strong> din acest deficit, restul fiind finanțat prin datorie externă, care a crescut la <strong>170,8 mld EUR</strong>. Acest „deficit dublu" (bugetar și extern) rămâne principalul risc structural al economiei românești.</p>
+        </div>
+    </section>
+
+    <!-- ==================== BUGET PUBLIC ==================== -->
+    <section class="section fade-in" id="budget">
+        <div class="section-header">
+            <div class="section-icon">🏗️</div>
+            <h2 class="section-title">Indicatori ai Administrației Publice</h2>
+        </div>
+        <p class="section-desc">Venituri, cheltuieli și soldul bugetului general consolidat</p>
+
+        <div class="grid-2" style="margin-bottom: 24px;">
+            <div class="card">
+                <div class="card-title">Venituri vs. Cheltuieli Bugetare</div>
+                <div class="card-subtitle">Bugetul administrației publice, cumulat (mld RON)</div>
+                <div class="chart-container">
+                    <canvas id="budgetChart"></canvas>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-title">Evoluția Deficitului Bugetar</div>
+                <div class="card-subtitle">Soldul bugetului general consolidat (mld RON)</div>
+                <div class="chart-container">
+                    <canvas id="deficitChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid-3" style="margin-bottom: 24px;">
+            <div class="kpi-card" data-tooltip="Total venituri buget general consolidat 2025, mld RON">
+                <div class="kpi-label">Venituri bugetare</div>
+                <div class="kpi-value" style="color: var(--bnr-green);">519,1</div>
+                <div class="kpi-detail">mld RON, 2025 (est.)</div>
+            </div>
+            <div class="kpi-card" data-tooltip="Total cheltuieli buget general consolidat 2025, mld RON">
+                <div class="kpi-label">Cheltuieli bugetare</div>
+                <div class="kpi-value" style="color: var(--bnr-red);">627,8</div>
+                <div class="kpi-detail">mld RON, 2025 (est.)</div>
+            </div>
+            <div class="kpi-card" data-tooltip="Deficit bugetar ca procent din PIB">
+                <div class="kpi-label">Deficit / PIB</div>
+                <div class="kpi-value" style="color: var(--bnr-red);">~6,5%</div>
+                <div class="kpi-detail">Estimare 2025</div>
+                <div class="kpi-badge badge-red">Peste limita UE 3%</div>
+            </div>
+        </div>
+
+        <div class="revelation">
+            <div class="revelation-label">Provocarea fiscală</div>
+            <h3>Deficitul bugetar rămâne la cote alarmante, peste dublu față de limita UE</h3>
+            <p>România continuă să aibă unul dintre cele mai mari deficite bugetare din UE, estimat la <strong>~6,5% din PIB</strong> în 2025, mult peste limita de 3% din Pactul de Stabilitate. Cheltuielile bugetare cresc mai rapid decât veniturile, iar consolidarea fiscală rămâne o provocare majoră. Datoria publică s-a majorat semnificativ, iar costurile de finanțare sunt presate în sus de dobânzile ridicate.</p>
+        </div>
+    </section>
+
+    <!-- ==================== DOBÂNZI ==================== -->
+    <section class="section fade-in" id="rates">
+        <div class="section-header">
+            <div class="section-icon">📉</div>
+            <h2 class="section-title">Dobânzile Bancare</h2>
+        </div>
+        <p class="section-desc">Ratele dobânzilor la depozite și credite noi în lei și euro</p>
+
+        <div class="grid-2">
+            <div class="card">
+                <div class="card-title">Dobânzi la Depozite Noi în Lei</div>
+                <div class="card-subtitle">Persoane fizice vs. societăți nefinanciare, 2025</div>
+                <div class="chart-container">
+                    <canvas id="depositRatesChart"></canvas>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-title">Dobânzi la Credite Noi în Lei</div>
+                <div class="card-subtitle">Persoane fizice vs. societăți nefinanciare, 2025</div>
+                <div class="chart-container">
+                    <canvas id="creditRatesChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="insight" style="margin-top: 24px;">
+            <div class="insight-title">Marja bancară</div>
+            <div class="insight-text">
+                Diferența dintre dobânda medie la creditele noi (~8-9%) și cea la depozitele noi (~4-5%) în lei rămâne semnificativă,
+                de aproximativ <strong>4 puncte procentuale</strong>. Această marjă generoasă explică profitabilitatea ridicată a sectorului bancar
+                și menține presiunea asupra costurilor de finanțare pentru companii și populație.
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== INSTITUȚII NEBANCARE ==================== -->
+    <section class="section fade-in" id="nbfi">
+        <div class="section-header">
+            <div class="section-icon">🏢</div>
+            <h2 class="section-title">Instituții Financiare Nebancare</h2>
+        </div>
+        <p class="section-desc">IFN-uri înscrise în Registrul General — active, credite și structură</p>
+
+        <div class="grid-3">
+            <div class="kpi-card" data-tooltip="Număr IFN+IEME+IP persoane juridice române înscrise în Registrul General, dec 2025">
+                <div class="kpi-label">IFN-uri înregistrate</div>
+                <div class="kpi-value">92.034</div>
+                <div class="kpi-detail">Dec 2025, persoane juridice</div>
+                <div class="kpi-badge badge-green">+14% față de 2024</div>
+            </div>
+            <div class="kpi-card" data-tooltip="Sucursale IFN străine în România">
+                <div class="kpi-label">Sucursale IFN străine</div>
+                <div class="kpi-value">949</div>
+                <div class="kpi-detail">Dec 2025</div>
+            </div>
+            <div class="kpi-card" data-tooltip="Credite pe termen mediu (1-5 ani)">
+                <div class="kpi-label">Credite termen mediu</div>
+                <div class="kpi-value">49.794</div>
+                <div class="kpi-detail">mil RON</div>
+                <div class="kpi-badge badge-blue">Cel mai mare segment</div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+    <p><strong>Banca Națională a României</strong> — Buletin Lunar, Decembrie 2025</p>
+    <p style="margin-top: 8px;">Secțiune Statistică | Anul XXXIII, nr. 386 | ISSN 1584-0840</p>
+    <p style="margin-top: 8px; font-size: 11px; color: rgba(255,255,255,0.35);">
+        Date disponibile la data de 6 februarie 2026. Unele date au caracter provizoriu. Sursa: BNR, INS, MFP, BVB.
+    </p>
+</footer>
+
+<script>
+// ============================================
+// UTILITY: Chart.js defaults
+// ============================================
+Chart.defaults.font.family = "'Inter', sans-serif";
+Chart.defaults.font.size = 12;
+Chart.defaults.color = '#6b7280';
+Chart.defaults.plugins.legend.labels.usePointStyle = true;
+Chart.defaults.plugins.legend.labels.pointStyleWidth = 10;
+Chart.defaults.plugins.legend.labels.padding = 16;
+Chart.defaults.plugins.tooltip.backgroundColor = '#0a1628';
+Chart.defaults.plugins.tooltip.padding = 12;
+Chart.defaults.plugins.tooltip.cornerRadius = 8;
+Chart.defaults.plugins.tooltip.titleFont = { weight: '600', size: 13 };
+Chart.defaults.plugins.tooltip.bodyFont = { size: 12 };
+Chart.defaults.elements.line.tension = 0.35;
+Chart.defaults.elements.point.radius = 3;
+Chart.defaults.elements.point.hoverRadius = 6;
+Chart.defaults.scale.grid = { color: 'rgba(0,0,0,0.04)' };
+
+const COLORS = {
+    blue: '#2c5aa0',
+    sky: '#4a90d9',
+    light: '#7ab8f5',
+    gold: '#d4a843',
+    red: '#c0392b',
+    green: '#27ae60',
+    orange: '#e67e22',
+    purple: '#8e44ad',
+    navy: '#0a1628',
+    teal: '#1abc9c',
+    pink: '#e74c8b'
+};
+
+function rgba(hex, alpha) {
+    const r = parseInt(hex.slice(1,3), 16);
+    const g = parseInt(hex.slice(3,5), 16);
+    const b = parseInt(hex.slice(5,7), 16);
+    return `rgba(${r},${g},${b},${alpha})`;
+}
+
+// ============================================
+// 1. GDP Chart
+// ============================================
+new Chart(document.getElementById('gdpChart'), {
+    type: 'bar',
+    data: {
+        labels: ['T1\'22','T2','T3','T4','T1\'23','T2','T3','T4','T1\'24','T2','T3','T4','T1\'25','T2','T3'],
+        datasets: [{
+            label: 'PIB variație anuală (%)',
+            data: [6.5, 5.3, 4.6, 5.2, 3.4, 1.6, 1.5, 0.6, 4.4, 2.1, 1.7, 1.2, 2.0, 1.8, 1.7],
+            backgroundColor: ctx => {
+                const v = ctx.raw;
+                return v >= 3 ? COLORS.green : v >= 1.5 ? COLORS.sky : COLORS.gold;
+            },
+            borderRadius: 6,
+            borderSkipped: false,
+            maxBarThickness: 36
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: { display: false },
+            tooltip: {
+                callbacks: {
+                    label: ctx => `PIB: ${ctx.raw > 0 ? '+' : ''}${ctx.raw}%`
+                }
+            }
+        },
+        scales: {
+            y: {
+                beginAtZero: true,
+                ticks: { callback: v => v + '%' }
+            }
+        }
+    }
+});
+
+// ============================================
+// 2. Industry + Unemployment
+// ============================================
+new Chart(document.getElementById('industryUnemployChart'), {
+    type: 'line',
+    data: {
+        labels: ['Ian','Feb','Mar','Apr','Mai','Iun','Iul','Aug','Sep','Oct','Nov','Dec'],
+        datasets: [{
+            label: 'Producție industrială (%)',
+            data: [-0.8, -2.1, -1.3, -0.5, -1.8, -2.4, -1.1, -0.3, -1.7, -1.4, null, null],
+            borderColor: COLORS.red,
+            backgroundColor: rgba(COLORS.red, 0.1),
+            fill: true,
+            yAxisID: 'y'
+        }, {
+            label: 'Rata șomajului (%)',
+            data: [5.4, 5.3, 5.3, 5.2, 5.1, 5.1, 5.2, 5.2, 5.2, 5.2, 5.2, null],
+            borderColor: COLORS.blue,
+            backgroundColor: rgba(COLORS.blue, 0.05),
+            borderDash: [5, 3],
+            yAxisID: 'y1'
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        interaction: { mode: 'index', intersect: false },
+        scales: {
+            y: { title: { display: true, text: 'Producție ind. (%)' } },
+            y1: { position: 'right', title: { display: true, text: 'Șomaj (%)' }, min: 4, max: 6.5, grid: { drawOnChartArea: false } }
+        }
+    }
+});
+
+// ============================================
+// 3. Inflation Chart
+// ============================================
+new Chart(document.getElementById('inflationChart'), {
+    type: 'line',
+    data: {
+        labels: ['Dec\'21','Mar\'22','Jun','Sep','Dec','Mar\'23','Jun','Sep','Dec','Mar\'24','Jun','Sep','Dec','Mar\'25','Jun','Sep','Dec'],
+        datasets: [{
+            label: 'IPC Total',
+            data: [8.2, 10.2, 15.1, 15.9, 16.4, 15.5, 12.4, 9.4, 7.0, 6.6, 5.4, 4.6, 5.5, 5.3, 5.0, 4.8, 5.1],
+            borderColor: COLORS.red,
+            borderWidth: 3,
+            backgroundColor: rgba(COLORS.red, 0.08),
+            fill: true
+        }, {
+            label: 'Alimente',
+            data: [7.6, 11.8, 18.8, 20.2, 21.2, 19.2, 14.8, 10.1, 6.2, 5.5, 3.8, 3.2, 4.8, 5.0, 5.2, 5.0, 5.4],
+            borderColor: COLORS.orange,
+            borderWidth: 2,
+            borderDash: [4, 2]
+        }, {
+            label: 'Servicii',
+            data: [6.8, 7.2, 9.2, 10.8, 11.2, 12.3, 11.6, 10.2, 8.8, 8.4, 7.6, 7.0, 6.9, 6.2, 5.8, 5.5, 5.3],
+            borderColor: COLORS.purple,
+            borderWidth: 2,
+            borderDash: [8, 4]
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        interaction: { mode: 'index', intersect: false },
+        scales: {
+            y: { ticks: { callback: v => v + '%' } }
+        },
+        plugins: {
+            tooltip: {
+                callbacks: {
+                    label: ctx => `${ctx.dataset.label}: ${ctx.raw}%`
+                }
+            }
+        }
+    }
+});
+
+// ============================================
+// 4. Inflation Pie
+// ============================================
+new Chart(document.getElementById('inflationPieChart'), {
+    type: 'doughnut',
+    data: {
+        labels: ['Alimente', 'Nealimentare', 'Servicii'],
+        datasets: [{
+            data: [37.5, 33.0, 29.5],
+            backgroundColor: [COLORS.orange, COLORS.sky, COLORS.purple],
+            borderWidth: 0,
+            hoverOffset: 10
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        cutout: '60%',
+        plugins: {
+            legend: { position: 'bottom' },
+            tooltip: {
+                callbacks: {
+                    label: ctx => `${ctx.label}: ${ctx.raw}% din coșul IPC`
+                }
+            }
+        }
+    }
+});
+
+// ============================================
+// 5. Policy Rate Chart
+// ============================================
+new Chart(document.getElementById('policyRateChart'), {
+    type: 'line',
+    data: {
+        labels: ['Ian\'22','Apr','Jul','Oct','Ian\'23','Apr','Jul','Oct','Ian\'24','Apr','Jul','Oct','Ian\'25','Apr','Jul','Oct','Dec'],
+        datasets: [{
+            label: 'Rata de politică monetară',
+            data: [2.0, 3.0, 4.75, 6.25, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 6.75, 6.50, 6.50, 6.50, 6.50, 6.50, 6.50],
+            borderColor: COLORS.blue,
+            borderWidth: 3,
+            backgroundColor: rgba(COLORS.blue, 0.1),
+            fill: true,
+            stepped: true
+        }, {
+            label: 'Facilitate creditare',
+            data: [3.0, 4.0, 5.75, 7.25, 8.0, 8.0, 8.0, 8.0, 8.0, 8.0, 7.75, 7.50, 7.50, 7.50, 7.50, 7.50, 7.50],
+            borderColor: COLORS.red,
+            borderWidth: 1.5,
+            borderDash: [5, 3],
+            stepped: true
+        }, {
+            label: 'Facilitate depozit',
+            data: [1.0, 2.0, 3.75, 5.25, 6.0, 6.0, 6.0, 6.0, 6.0, 6.0, 5.75, 5.50, 5.50, 5.50, 5.50, 5.50, 5.50],
+            borderColor: COLORS.green,
+            borderWidth: 1.5,
+            borderDash: [5, 3],
+            stepped: true
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        interaction: { mode: 'index', intersect: false },
+        scales: {
+            y: { ticks: { callback: v => v + '%' }, min: 0 }
+        }
+    }
+});
+
+// ============================================
+// 6. Monetary Base
+// ============================================
+new Chart(document.getElementById('monetaryBaseChart'), {
+    type: 'bar',
+    data: {
+        labels: ['Ian','Feb','Mar','Apr','Mai','Iun','Iul','Aug','Sep','Oct','Nov','Dec'],
+        datasets: [{
+            label: 'Numerar în circulație (mld RON)',
+            data: [109.7, 108.2, 109.6, 109.8, 111.0, 113.3, 114.3, 114.2, 114.0, 114.8, 115.7, 122.4],
+            backgroundColor: COLORS.blue,
+            borderRadius: 4,
+            stack: 'stack0'
+        }, {
+            label: 'Conturi curente (mld RON)',
+            data: [38.1, 40.9, 35.3, 39.1, 37.2, 36.9, 42.7, 34.0, 32.2, 33.1, 36.3, 29.9],
+            backgroundColor: COLORS.sky,
+            borderRadius: 4,
+            stack: 'stack0'
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+            x: { stacked: true },
+            y: { stacked: true, ticks: { callback: v => v + ' mld' } }
+        }
+    }
+});
+
+// ============================================
+// 7. M3 Chart
+// ============================================
+new Chart(document.getElementById('m3Chart'), {
+    type: 'line',
+    data: {
+        labels: ['Dec\'21','Jun\'22','Dec','Jun\'23','Dec','Jun\'24','Dec','Jun\'25','Dec'],
+        datasets: [{
+            label: 'Masa monetară M3 (mld RON)',
+            data: [493.4, 509.4, 533.8, 554.3, 588.7, 622.8, 672.5, 710.2, 751.9],
+            borderColor: COLORS.navy,
+            borderWidth: 3,
+            backgroundColor: rgba(COLORS.navy, 0.08),
+            fill: true,
+            pointBackgroundColor: COLORS.navy
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            tooltip: {
+                callbacks: {
+                    label: ctx => `M3: ${ctx.raw} mld RON`
+                }
+            }
+        },
+        scales: {
+            y: { ticks: { callback: v => v + ' mld' } }
+        }
+    }
+});
+
+// ============================================
+// 8. Banking Risk Chart
+// ============================================
+new Chart(document.getElementById('bankingRiskChart'), {
+    type: 'line',
+    data: {
+        labels: ['Dec\'21','Jun\'22','Dec','Jun\'23','Dec','Jun\'24','Dec','Mar\'25','Jun','Sep'],
+        datasets: [{
+            label: 'Rata solvabilitate (%)',
+            data: [23.3, 22.4, 23.6, 22.1, 23.8, 22.5, 22.6, 23.1, 23.2, 23.5],
+            borderColor: COLORS.green,
+            borderWidth: 3,
+            backgroundColor: rgba(COLORS.green, 0.08),
+            fill: true,
+            yAxisID: 'y'
+        }, {
+            label: 'Rata NPL (%)',
+            data: [3.4, 3.1, 2.7, 2.6, 2.4, 2.4, 2.3, 2.3, 2.3, 2.3],
+            borderColor: COLORS.red,
+            borderWidth: 3,
+            yAxisID: 'y1'
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        interaction: { mode: 'index', intersect: false },
+        scales: {
+            y: { title: { display: true, text: 'Solvabilitate (%)' }, min: 18, max: 28 },
+            y1: { position: 'right', title: { display: true, text: 'NPL (%)' }, min: 0, max: 5, grid: { drawOnChartArea: false } }
+        }
+    }
+});
+
+// ============================================
+// 9. Bank Profitability
+// ============================================
+new Chart(document.getElementById('bankProfitChart'), {
+    type: 'bar',
+    data: {
+        labels: ['2021', '2022', '2023', '2024', 'Sep 2025'],
+        datasets: [{
+            label: 'ROE (%)',
+            data: [12.5, 15.8, 18.9, 19.6, 20.8],
+            backgroundColor: COLORS.green,
+            borderRadius: 6,
+            maxBarThickness: 48
+        }, {
+            label: 'ROA (%)',
+            data: [1.3, 1.5, 1.7, 1.8, 1.9],
+            backgroundColor: COLORS.gold,
+            borderRadius: 6,
+            maxBarThickness: 48
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+            y: { ticks: { callback: v => v + '%' } }
+        },
+        plugins: {
+            tooltip: {
+                callbacks: {
+                    label: ctx => `${ctx.dataset.label}: ${ctx.raw}%`
+                }
+            }
+        }
+    }
+});
+
+// ============================================
+// 10. Deposits Chart
+// ============================================
+new Chart(document.getElementById('depositsChart'), {
+    type: 'bar',
+    data: {
+        labels: ['Ian','Feb','Mar','Apr','Mai','Iun','Iul','Aug','Sep','Oct','Nov','Dec'],
+        datasets: [{
+            label: 'Depozite populație (mld RON)',
+            data: [272.6, 275.2, 279.1, 282.4, 285.0, 288.3, 290.1, 291.8, 293.7, 297.1, 299.5, 303.8],
+            backgroundColor: COLORS.blue,
+            borderRadius: 4,
+            stack: 'stack0'
+        }, {
+            label: 'Depozite companii (mld RON)',
+            data: [140.5, 142.3, 143.8, 144.2, 147.1, 148.6, 150.2, 153.4, 155.0, 158.2, 160.4, 172.8],
+            backgroundColor: COLORS.sky,
+            borderRadius: 4,
+            stack: 'stack0'
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+            x: { stacked: true },
+            y: { stacked: true, ticks: { callback: v => v + ' mld' } }
+        }
+    }
+});
+
+// ============================================
+// 11. Credits Chart
+// ============================================
+new Chart(document.getElementById('creditsChart'), {
+    type: 'line',
+    data: {
+        labels: ['Ian','Feb','Mar','Apr','Mai','Iun','Iul','Aug','Sep','Oct','Nov','Dec'],
+        datasets: [{
+            label: 'Credite persoane fizice',
+            data: [173.2, 174.5, 176.8, 178.2, 179.8, 181.4, 183.1, 184.6, 186.2, 187.8, 189.1, 191.5],
+            borderColor: COLORS.purple,
+            borderWidth: 2.5,
+            backgroundColor: rgba(COLORS.purple, 0.08),
+            fill: true
+        }, {
+            label: 'Credite companii',
+            data: [132.5, 133.8, 134.2, 135.1, 136.4, 137.8, 138.6, 139.2, 140.8, 142.1, 144.5, 147.9],
+            borderColor: COLORS.teal,
+            borderWidth: 2.5,
+            backgroundColor: rgba(COLORS.teal, 0.08),
+            fill: true
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        interaction: { mode: 'index', intersect: false },
+        scales: {
+            y: { ticks: { callback: v => v + ' mld' } }
+        }
+    }
+});
+
+// ============================================
+// 12. Credit Sector Chart
+// ============================================
+new Chart(document.getElementById('creditSectorChart'), {
+    type: 'bar',
+    data: {
+        labels: ['Persoane fizice', 'Industrie', 'Servicii & comerț', 'Construcții', 'Agricultură', 'Admin. publică', 'Altele'],
+        datasets: [{
+            label: 'mld RON',
+            data: [191.5, 42.7, 56.3, 14.8, 8.2, 5.6, 20.3],
+            backgroundColor: [COLORS.purple, COLORS.blue, COLORS.teal, COLORS.orange, COLORS.green, COLORS.gold, COLORS.light],
+            borderRadius: 8,
+            maxBarThickness: 56
+        }]
+    },
+    options: {
+        indexAxis: 'y',
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: { display: false },
+            tooltip: {
+                callbacks: {
+                    label: ctx => `${ctx.raw} mld RON`
+                }
+            }
+        },
+        scales: {
+            x: { ticks: { callback: v => v + ' mld' } }
+        }
+    }
+});
+
+// ============================================
+// 13. EUR/RON Chart
+// ============================================
+new Chart(document.getElementById('eurronChart'), {
+    type: 'line',
+    data: {
+        labels: ['Ian\'21','Jul','Ian\'22','Jul','Ian\'23','Jul','Ian\'24','Jul','Ian\'25','Jul','Dec'],
+        datasets: [{
+            label: 'EUR/RON',
+            data: [4.870, 4.926, 4.946, 4.930, 4.919, 4.946, 4.976, 4.966, 4.976, 4.977, 4.976],
+            borderColor: COLORS.blue,
+            borderWidth: 3,
+            backgroundColor: rgba(COLORS.blue, 0.1),
+            fill: true,
+            pointBackgroundColor: COLORS.blue
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+            y: { min: 4.82, max: 5.02 }
+        },
+        plugins: {
+            tooltip: {
+                callbacks: {
+                    label: ctx => `EUR/RON: ${ctx.raw.toFixed(4)}`
+                }
+            }
+        }
+    }
+});
+
+// ============================================
+// 14. USD/RON Chart
+// ============================================
+new Chart(document.getElementById('usdronChart'), {
+    type: 'line',
+    data: {
+        labels: ['Ian\'21','Jul','Ian\'22','Jul','Ian\'23','Jul','Ian\'24','Jul','Ian\'25','Jul','Dec'],
+        datasets: [{
+            label: 'USD/RON',
+            data: [4.013, 4.140, 4.375, 4.826, 4.585, 4.539, 4.581, 4.571, 4.807, 4.470, 4.808],
+            borderColor: COLORS.green,
+            borderWidth: 3,
+            backgroundColor: rgba(COLORS.green, 0.08),
+            fill: true,
+            pointBackgroundColor: COLORS.green
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+            y: { min: 3.8, max: 5.1 }
+        },
+        plugins: {
+            tooltip: {
+                callbacks: {
+                    label: ctx => `USD/RON: ${ctx.raw.toFixed(3)}`
+                }
+            }
+        }
+    }
+});
+
+// ============================================
+// 15. BET Index Chart
+// ============================================
+new Chart(document.getElementById('betChart'), {
+    type: 'line',
+    data: {
+        labels: ['Ian\'22','Apr','Jul','Oct','Ian\'23','Apr','Jul','Oct','Ian\'24','Apr','Jul','Oct','Ian\'25','Apr','Jul','Oct','Dec'],
+        datasets: [{
+            label: 'Indice BET',
+            data: [12899, 13089, 11860, 11380, 12110, 12509, 13860, 12959, 14510, 16109, 17196, 17280, 16455, 17289, 18159, 17815, 18415],
+            borderColor: COLORS.navy,
+            borderWidth: 3,
+            backgroundColor: function(context) {
+                const chart = context.chart;
+                const {ctx, chartArea} = chart;
+                if (!chartArea) return null;
+                const gradient = ctx.createLinearGradient(0, chartArea.bottom, 0, chartArea.top);
+                gradient.addColorStop(0, rgba(COLORS.navy, 0));
+                gradient.addColorStop(1, rgba(COLORS.green, 0.2));
+                return gradient;
+            },
+            fill: true,
+            pointBackgroundColor: COLORS.navy,
+            pointRadius: 2
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+            y: {
+                ticks: {
+                    callback: v => (v/1000).toFixed(0) + 'k'
+                }
+            }
+        },
+        plugins: {
+            tooltip: {
+                callbacks: {
+                    label: ctx => `BET: ${ctx.raw.toLocaleString('ro-RO')} puncte`
+                }
+            }
+        }
+    }
+});
+
+// ============================================
+// 16. Balance of Payments
+// ============================================
+new Chart(document.getElementById('bopChart'), {
+    type: 'bar',
+    data: {
+        labels: ['Bunuri', 'Servicii', 'Venituri primare', 'Venituri secundare', 'CONT CURENT'],
+        datasets: [{
+            label: 'Ian-Oct 2024 (mld EUR)',
+            data: [-22.6, 8.9, -5.8, 0.7, -18.8],
+            backgroundColor: rgba(COLORS.blue, 0.5),
+            borderRadius: 6,
+            maxBarThickness: 40
+        }, {
+            label: 'Ian-Oct 2025 (mld EUR)',
+            data: [-25.4, 9.7, -6.9, 0.8, -21.8],
+            backgroundColor: COLORS.blue,
+            borderRadius: 6,
+            maxBarThickness: 40
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+            y: { ticks: { callback: v => v + ' mld' } }
+        },
+        plugins: {
+            tooltip: {
+                callbacks: {
+                    label: ctx => `${ctx.dataset.label}: ${ctx.raw > 0 ? '+' : ''}${ctx.raw} mld EUR`
+                }
+            }
+        }
+    }
+});
+
+// ============================================
+// 17. External Debt Chart
+// ============================================
+new Chart(document.getElementById('extDebtChart'), {
+    type: 'bar',
+    data: {
+        labels: ['2021', '2022', '2023', '2024', 'Oct 2025'],
+        datasets: [{
+            label: 'Datorie pe termen lung (mld EUR)',
+            data: [96.8, 100.2, 108.4, 118.6, 131.8],
+            backgroundColor: COLORS.red,
+            borderRadius: 4,
+            stack: 'stack0'
+        }, {
+            label: 'Datorie pe termen scurt (mld EUR)',
+            data: [28.5, 30.1, 32.6, 35.2, 39.0],
+            backgroundColor: COLORS.orange,
+            borderRadius: 4,
+            stack: 'stack0'
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+            x: { stacked: true },
+            y: { stacked: true, ticks: { callback: v => v + ' mld' } }
+        }
+    }
+});
+
+// ============================================
+// 18. Budget Chart
+// ============================================
+new Chart(document.getElementById('budgetChart'), {
+    type: 'bar',
+    data: {
+        labels: ['2021', '2022', '2023', '2024', '2025 (est.)'],
+        datasets: [{
+            label: 'Venituri (mld RON)',
+            data: [344.3, 401.5, 449.0, 486.8, 519.1],
+            backgroundColor: COLORS.green,
+            borderRadius: 6,
+            maxBarThickness: 40
+        }, {
+            label: 'Cheltuieli (mld RON)',
+            data: [405.0, 465.7, 520.3, 572.4, 627.8],
+            backgroundColor: COLORS.red,
+            borderRadius: 6,
+            maxBarThickness: 40
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+            y: { ticks: { callback: v => v + ' mld' } }
+        }
+    }
+});
+
+// ============================================
+// 19. Deficit Chart
+// ============================================
+new Chart(document.getElementById('deficitChart'), {
+    type: 'bar',
+    data: {
+        labels: ['Ian','Feb','Mar','Apr','Mai','Iun','Iul','Aug','Sep','Oct','Nov','Dec'],
+        datasets: [{
+            label: 'Sold bugetar cumulat (mld RON)',
+            data: [-7.1, -16.8, -24.5, -30.2, -38.4, -48.7, -52.3, -59.8, -68.1, -74.2, -85.6, -108.7],
+            backgroundColor: ctx => {
+                const chart = ctx.chart;
+                const {ctx: c, chartArea} = chart;
+                if (!chartArea) return COLORS.red;
+                const gradient = c.createLinearGradient(0, chartArea.top, 0, chartArea.bottom);
+                gradient.addColorStop(0, rgba(COLORS.orange, 0.7));
+                gradient.addColorStop(1, rgba(COLORS.red, 1));
+                return gradient;
+            },
+            borderRadius: 4,
+            maxBarThickness: 40
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+            y: { ticks: { callback: v => v + ' mld' } }
+        }
+    }
+});
+
+// ============================================
+// 20. Deposit Rates Chart
+// ============================================
+new Chart(document.getElementById('depositRatesChart'), {
+    type: 'line',
+    data: {
+        labels: ['Ian','Feb','Mar','Apr','Mai','Iun','Iul','Aug','Sep','Oct','Nov','Dec'],
+        datasets: [{
+            label: 'Persoane fizice',
+            data: [5.2, 5.1, 4.9, 4.8, 4.6, 4.5, 4.4, 4.3, 4.2, 4.1, 4.0, 3.9],
+            borderColor: COLORS.purple,
+            borderWidth: 2.5,
+            backgroundColor: rgba(COLORS.purple, 0.08),
+            fill: true
+        }, {
+            label: 'Soc. nefinanciare',
+            data: [4.8, 4.6, 4.5, 4.3, 4.2, 4.0, 3.9, 3.8, 3.7, 3.5, 3.4, 3.3],
+            borderColor: COLORS.teal,
+            borderWidth: 2.5,
+            backgroundColor: rgba(COLORS.teal, 0.08),
+            fill: true
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        interaction: { mode: 'index', intersect: false },
+        scales: {
+            y: { ticks: { callback: v => v + '%' }, min: 2.5, max: 6 }
+        }
+    }
+});
+
+// ============================================
+// 21. Credit Rates Chart
+// ============================================
+new Chart(document.getElementById('creditRatesChart'), {
+    type: 'line',
+    data: {
+        labels: ['Ian','Feb','Mar','Apr','Mai','Iun','Iul','Aug','Sep','Oct','Nov','Dec'],
+        datasets: [{
+            label: 'Persoane fizice',
+            data: [9.2, 9.1, 8.9, 8.8, 8.7, 8.6, 8.4, 8.3, 8.2, 8.1, 8.0, 7.9],
+            borderColor: COLORS.red,
+            borderWidth: 2.5,
+            backgroundColor: rgba(COLORS.red, 0.08),
+            fill: true
+        }, {
+            label: 'Soc. nefinanciare',
+            data: [8.5, 8.3, 8.2, 8.0, 7.9, 7.8, 7.6, 7.5, 7.4, 7.3, 7.2, 7.1],
+            borderColor: COLORS.orange,
+            borderWidth: 2.5,
+            backgroundColor: rgba(COLORS.orange, 0.08),
+            fill: true
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        interaction: { mode: 'index', intersect: false },
+        scales: {
+            y: { ticks: { callback: v => v + '%' }, min: 5, max: 11 }
+        }
+    }
+});
+
+// ============================================
+// SCROLL ANIMATION
+// ============================================
+function scrollToSection(id) {
+    document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    event.target.classList.add('active');
+}
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// Active nav tracking
+const sections = document.querySelectorAll('.section');
+const navItems = document.querySelectorAll('.nav-item');
+
+window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop - 120;
+        if (scrollY >= sectionTop) {
+            current = section.getAttribute('id');
+        }
+    });
+    navItems.forEach(item => {
+        item.classList.remove('active');
+        if (item.getAttribute('onclick')?.includes(current)) {
+            item.classList.add('active');
+        }
+    });
+});
+</script>
+</body>
+</html>
