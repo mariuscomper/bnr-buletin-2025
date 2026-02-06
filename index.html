@@ -1358,10 +1358,7 @@ new Chart(document.getElementById('gdpChart'), {
         datasets: [{
             label: 'PIB variație anuală (%)',
             data: [6.5, 5.3, 4.6, 5.2, 3.4, 1.6, 1.5, 0.6, 4.4, 2.1, 1.7, 1.2, 2.0, 1.8, 1.7],
-            backgroundColor: ctx => {
-                const v = ctx.raw;
-                return v >= 3 ? COLORS.green : v >= 1.5 ? COLORS.sky : COLORS.gold;
-            },
+            backgroundColor: [6.5, 5.3, 4.6, 5.2, 3.4, 1.6, 1.5, 0.6, 4.4, 2.1, 1.7, 1.2, 2.0, 1.8, 1.7].map(v => v >= 3 ? COLORS.green : v >= 1.5 ? COLORS.sky : COLORS.gold),
             borderRadius: 6,
             borderSkipped: false,
             maxBarThickness: 36
@@ -1846,15 +1843,7 @@ new Chart(document.getElementById('betChart'), {
             data: [12899, 13089, 11860, 11380, 12110, 12509, 13860, 12959, 14510, 16109, 17196, 17280, 16455, 17289, 18159, 17815, 18415],
             borderColor: COLORS.navy,
             borderWidth: 3,
-            backgroundColor: function(context) {
-                const chart = context.chart;
-                const {ctx, chartArea} = chart;
-                if (!chartArea) return null;
-                const gradient = ctx.createLinearGradient(0, chartArea.bottom, 0, chartArea.top);
-                gradient.addColorStop(0, rgba(COLORS.navy, 0));
-                gradient.addColorStop(1, rgba(COLORS.green, 0.2));
-                return gradient;
-            },
+            backgroundColor: rgba(COLORS.navy, 0.08),
             fill: true,
             pointBackgroundColor: COLORS.navy,
             pointRadius: 2
@@ -1988,15 +1977,7 @@ new Chart(document.getElementById('deficitChart'), {
         datasets: [{
             label: 'Sold bugetar cumulat (mld RON)',
             data: [-7.1, -16.8, -24.5, -30.2, -38.4, -48.7, -52.3, -59.8, -68.1, -74.2, -85.6, -108.7],
-            backgroundColor: ctx => {
-                const chart = ctx.chart;
-                const {ctx: c, chartArea} = chart;
-                if (!chartArea) return COLORS.red;
-                const gradient = c.createLinearGradient(0, chartArea.top, 0, chartArea.bottom);
-                gradient.addColorStop(0, rgba(COLORS.orange, 0.7));
-                gradient.addColorStop(1, rgba(COLORS.red, 1));
-                return gradient;
-            },
+            backgroundColor: COLORS.red,
             borderRadius: 4,
             maxBarThickness: 40
         }]
