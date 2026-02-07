@@ -675,7 +675,7 @@
             <div class="hero-stat" data-tooltip="Cursul EUR/RON la 31 decembrie 2025">
                 <div class="hero-stat-value">4,976</div>
                 <div class="hero-stat-label">EUR/RON</div>
-                <div class="hero-stat-change change-down">&#9650; +0,3% YTD</div>
+                <div class="hero-stat-change change-neutral">&#9644; stabil la finalul lui dec</div>
             </div>
         </div>
     </div>
@@ -911,25 +911,25 @@
         <div class="grid-4" style="margin-bottom: 24px;">
             <div class="kpi-card" data-tooltip="Raportul fondurilor proprii totale / active ponderate la risc">
                 <div class="kpi-label">Rata de solvabilitate</div>
-                <div class="kpi-value" style="color: var(--bnr-green);">23,5%</div>
+                <div class="kpi-value" style="color: var(--bnr-green);">24,0%</div>
                 <div class="kpi-detail">Sep 2025</div>
                 <div class="kpi-badge badge-green">Peste minim 8%</div>
             </div>
             <div class="kpi-card" data-tooltip="Rata creditelor neperformante (NPL) în total credite">
                 <div class="kpi-label">Rata NPL</div>
-                <div class="kpi-value">2,3%</div>
+                <div class="kpi-value">2,87%</div>
                 <div class="kpi-detail">Sep 2025</div>
-                <div class="kpi-badge badge-green">Nivel istoric scăzut</div>
+                <div class="kpi-badge badge-blue">Ușoară creștere</div>
             </div>
             <div class="kpi-card" data-tooltip="Rentabilitatea capitalului propriu (ROE)">
                 <div class="kpi-label">ROE</div>
-                <div class="kpi-value" style="color: var(--bnr-green);">20,8%</div>
+                <div class="kpi-value" style="color: var(--bnr-green);">18,4%</div>
                 <div class="kpi-detail">Sep 2025</div>
                 <div class="kpi-badge badge-green">Profitabilitate ridicată</div>
             </div>
             <div class="kpi-card" data-tooltip="Gradul de acoperire cu provizioane a creditelor neperformante">
                 <div class="kpi-label">Acoperire provizioane</div>
-                <div class="kpi-value">66,3%</div>
+                <div class="kpi-value">58,3%</div>
                 <div class="kpi-detail">Sep 2025</div>
                 <div class="kpi-badge badge-blue">Nivel adecvat</div>
             </div>
@@ -955,7 +955,7 @@
         <div class="revelation" style="margin-top: 24px;">
             <div class="revelation-label">Sectorul bancar — sănătate excelentă</div>
             <h3>România are unul dintre cele mai sănătoase sisteme bancare din UE</h3>
-            <p>Cu o rată de solvabilitate de <strong>23,5%</strong> (aproape de 3x minimul reglementar), o rată NPL de doar <strong>2,3%</strong> (cel mai scăzut nivel istoric) și un ROE de <strong>20,8%</strong>, sectorul bancar românesc se află într-o formă excepțională. Nivelul scăzut al creditelor neperformante arată o calitate solidă a portofoliului, iar profitabilitatea ridicată reflectă marjele generoase de dobândă.</p>
+            <p>Cu o rată de solvabilitate de <strong>24,0%</strong> (3x minimul reglementar), o rată NPL de <strong>2,87%</strong> și un ROE de <strong>18,4%</strong>, sectorul bancar românesc rămâne solid. NPL a crescut ușor față de minimul din 2023 (2,3%), iar profitabilitatea s-a temperat marginal, dar indicatorii rămân confortabili. Rata de acoperire cu provizioane (58,3%) oferă un tampon rezonabil.</p>
         </div>
     </section>
 
@@ -1600,7 +1600,7 @@ new Chart(document.getElementById('bankingRiskChart'), {
         labels: ['Dec\'21','Jun\'22','Dec','Jun\'23','Dec','Jun\'24','Dec','Mar\'25','Jun','Sep'],
         datasets: [{
             label: 'Rata solvabilitate (%)',
-            data: [23.3, 22.4, 23.6, 22.1, 23.8, 22.5, 22.6, 23.1, 23.2, 23.5],
+            data: [23.3, 21.4, 22.7, 22.8, 24.9, 24.0, 23.7, 24.2, 24.2, 24.0],
             borderColor: COLORS.green,
             borderWidth: 3,
             backgroundColor: rgba(COLORS.green, 0.08),
@@ -1608,7 +1608,7 @@ new Chart(document.getElementById('bankingRiskChart'), {
             yAxisID: 'y'
         }, {
             label: 'Rata NPL (%)',
-            data: [3.4, 3.1, 2.7, 2.6, 2.4, 2.4, 2.3, 2.3, 2.3, 2.3],
+            data: [3.35, 2.96, 2.65, 2.65, 2.30, 2.50, 2.46, 2.50, 2.81, 2.87],
             borderColor: COLORS.red,
             borderWidth: 3,
             yAxisID: 'y1'
@@ -1634,12 +1634,12 @@ new Chart(document.getElementById('bankProfitChart'), {
         labels: ['2021', '2022', '2023', '2024', 'Sep 2025'],
         datasets: [{
             label: 'ROE (%)',
-            data: [12.5, 15.8, 18.9, 19.6, 20.8],
+            data: [13.3, 16.4, 20.1, 18.4, 18.4],
             backgroundColor: COLORS.green,
             barPercentage: 0.8
         }, {
             label: 'ROA (%)',
-            data: [1.3, 1.5, 1.7, 1.8, 1.9],
+            data: [1.36, 1.50, 1.80, 1.68, 1.73],
             backgroundColor: COLORS.gold,
             barPercentage: 0.8
         }]
