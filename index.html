@@ -663,9 +663,9 @@
                 <div class="hero-stat-change change-down">&#9660; de la 2,1%</div>
             </div>
             <div class="hero-stat" data-tooltip="Rata inflației IPC, variație anuală dec 2025">
-                <div class="hero-stat-value">5,1%</div>
+                <div class="hero-stat-value">9,7%</div>
                 <div class="hero-stat-label">Rata Inflației</div>
-                <div class="hero-stat-change change-down">&#9660; de la 5,5% nov</div>
+                <div class="hero-stat-change change-up">&#9650; de la 5,1% dec 2024</div>
             </div>
             <div class="hero-stat" data-tooltip="Rata dobânzii de politică monetară BNR">
                 <div class="hero-stat-value">6,50%</div>
@@ -787,19 +787,19 @@
                     <div class="comparison-row">
                         <span class="comparison-label">Alimente</span>
                         <div class="comparison-values">
-                            <span class="comparison-new" style="color: var(--bnr-red);">+5,4%</span>
+                            <span class="comparison-new" style="color: var(--bnr-red);">+7,8%</span>
                         </div>
                     </div>
                     <div class="comparison-row">
                         <span class="comparison-label">Nealimentare</span>
                         <div class="comparison-values">
-                            <span class="comparison-new" style="color: var(--bnr-orange);">+4,7%</span>
+                            <span class="comparison-new" style="color: var(--bnr-orange);">+10,5%</span>
                         </div>
                     </div>
                     <div class="comparison-row">
                         <span class="comparison-label">Servicii</span>
                         <div class="comparison-values">
-                            <span class="comparison-new" style="color: var(--bnr-purple);">+5,3%</span>
+                            <span class="comparison-new" style="color: var(--bnr-purple);">+11,0%</span>
                         </div>
                     </div>
                 </div>
@@ -808,9 +808,8 @@
 
         <div class="revelation">
             <div class="revelation-label">Descoperire cheie</div>
-            <h3>Inflația s-a temperat semnificativ față de vârful din 2022</h3>
-            <p>De la un maxim de <strong>16,8%</strong> în noiembrie 2022, inflația s-a redus la <strong>5,1%</strong> în decembrie 2025. Totuși, prețurile alimentelor
-            rămân principalul motor al inflației, iar serviciile au o componentă persistentă. Rata de bază (CORE2 ajustat) se menține la aproximativ 5,1%, indicând presiuni inflaționiste de fond care nu permit BNR o relaxare monetară rapidă.</p>
+            <h3>Inflația a reaccelecat puternic în a doua jumătate a lui 2025</h3>
+            <p>După ce coborâse la <strong>4,6%</strong> în septembrie 2024, inflația a explodat înapoi la <strong>9,7%</strong> în decembrie 2025, alimentată de majorări de taxe (TVA, accize) și creșteri de prețuri la energie. Nealimentarele (+10,5%) și serviciile (+11,0%) au depășit alimentele (+7,8%) ca motor al inflației — o inversare față de 2022-2023. Această re-accelerare face imposibilă relaxarea monetară și pune presiune pe puterea de cumpărare a populației.</p>
         </div>
     </section>
 
@@ -1424,20 +1423,20 @@ new Chart(document.getElementById('inflationChart'), {
         labels: ['Dec\'21','Mar\'22','Jun','Sep','Dec','Mar\'23','Jun','Sep','Dec','Mar\'24','Jun','Sep','Dec','Mar\'25','Jun','Sep','Dec'],
         datasets: [{
             label: 'IPC Total',
-            data: [8.2, 10.2, 15.1, 15.9, 16.4, 15.5, 12.4, 9.4, 7.0, 6.6, 5.4, 4.6, 5.5, 5.3, 5.0, 4.8, 5.1],
+            data: [8.2, 10.2, 15.1, 15.9, 16.4, 14.5, 10.3, 8.8, 6.6, 6.6, 4.9, 4.6, 5.1, 4.9, 5.7, 9.9, 9.7],
             borderColor: COLORS.red,
             borderWidth: 3,
             backgroundColor: rgba(COLORS.red, 0.08),
             fill: true
         }, {
             label: 'Alimente',
-            data: [7.6, 11.8, 18.8, 20.2, 21.2, 19.2, 14.8, 10.1, 6.2, 5.5, 3.8, 3.2, 4.8, 5.0, 5.2, 5.0, 5.4],
+            data: [7.6, 11.8, 18.8, 20.2, 21.2, 18.0, 12.5, 8.5, 5.3, 4.8, 3.2, 3.0, 4.5, 4.2, 5.0, 7.5, 7.8],
             borderColor: COLORS.orange,
             borderWidth: 2,
             borderDash: [4, 2]
         }, {
             label: 'Servicii',
-            data: [6.8, 7.2, 9.2, 10.8, 11.2, 12.3, 11.6, 10.2, 8.8, 8.4, 7.6, 7.0, 6.9, 6.2, 5.8, 5.5, 5.3],
+            data: [6.8, 7.2, 9.2, 10.8, 11.2, 12.3, 11.6, 10.2, 8.8, 8.4, 7.6, 7.0, 6.9, 6.5, 7.2, 10.5, 11.0],
             borderColor: COLORS.purple,
             borderWidth: 2,
             borderDash: [8, 4]
